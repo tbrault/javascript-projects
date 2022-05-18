@@ -34,3 +34,20 @@ const changeSlideTransformStyleProperty = () => {
     slide.style.transform = `translateX(-${counter * 100}%)`;
   });
 };
+
+var objetGlobal = this;
+var toto = () => this;
+console.log(toto() === objetGlobal); // true
+
+// Appelé comme la méthode d'un objet
+var obj = { toto: toto };
+console.log(obj.toto() === objetGlobal); // true
+
+const titi = {
+  tota: () => this,
+  tato: setTimeout(function tato() {
+    return this;
+  }, 1000),
+};
+
+console.log(titi.tato);
